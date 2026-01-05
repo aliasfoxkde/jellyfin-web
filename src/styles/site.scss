@@ -175,3 +175,193 @@ form {
     margin-top: auto;
     margin-bottom: auto;
 }
+
+/* ============================================================
+   IMPROVED MOBILE RESPONSIVENESS & KEYBOARD NAVIGATION
+   ============================================================ */
+
+/* Better focus indicators for keyboard navigation */
+:focus-visible {
+    outline: 3px solid #00a4dc !important;
+    outline-offset: 2px !important;
+}
+
+/* Skip navigation for keyboard users */
+.skip-to-main-content {
+    position: absolute;
+    left: -9999px;
+    z-index: 999;
+    padding: 1rem;
+    background: #101010;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.skip-to-main-content:focus {
+    left: 0;
+    top: 0;
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+    /* Better touch targets on mobile */
+    button,
+    a,
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    /* Full-width cards on mobile */
+    .card,
+    .itemsContainer {
+        width: 100% !important;
+        padding: 0.5em !important;
+    }
+
+    /* Responsive typography */
+    html {
+        font-size: 14px;
+    }
+
+    /* Hide less important elements on small screens */
+    .hide-on-mobile {
+        display: none !important;
+    }
+
+    /* Better mobile navigation */
+    .mainDrawer {
+        width: 85%;
+        max-width: 300px;
+    }
+
+    /* Responsive video player */
+    .videoPlayerContainer {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    /* Touch-friendly scrolling */
+    .scrollY {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Adjust padding for mobile */
+    .padded-content,
+    .content-primary {
+        padding: 1em !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Show 2 columns on tablets */
+    .card,
+    .itemsContainer {
+        width: 50% !important;
+    }
+}
+
+/* Large desktop improvements */
+@media (min-width: 1920px) {
+    /* Show more columns on ultra-wide screens */
+    .card,
+    .itemsContainer {
+        max-width: 25%;
+    }
+}
+
+/* Prevent horizontal scroll on mobile */
+body,
+html {
+    overflow-x: hidden;
+}
+
+/* Better mobile form inputs */
+@media (max-width: 768px) {
+    input,
+    select,
+    textarea {
+        font-size: 16px !important; /* Prevents iOS zoom */
+    }
+
+    /* Full-width forms on mobile */
+    form,
+    .form {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Improved card hover states for desktop */
+@media (min-width: 769px) {
+    .card:hover {
+        transform: translateY(-4px);
+        transition: transform 0.2s ease-in-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .card:focus-within {
+        transform: translateY(-4px);
+        box-shadow: 0 0 0 3px #00a4dc;
+    }
+}
+
+/* Smooth scrolling for better UX */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better focus styles for interactive elements */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    box-shadow: 0 0 0 3px rgba(0, 164, 220, 0.5);
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Better mobile layout for home page */
+@media (max-width: 768px) {
+    .homePage {
+        padding: 0;
+    }
+
+    /* Full-width hero sections */
+    .hero,
+    .banner {
+        width: 100%;
+        padding: 1em;
+    }
+
+    /* Stack vertically on mobile */
+    .flex-row {
+        flex-direction: column;
+    }
+
+    /* Center content on mobile */
+    .text-center-mobile {
+        text-align: center;
+    }
+}
+
+/* Landscape mobile adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+    /* Reduce vertical spacing in landscape */
+    .sectionTitle {
+        margin: 0.5em 0;
+    }
+
+    /* Smaller fonts in landscape */
+    html {
+        font-size: 13px;
+    }
+}
