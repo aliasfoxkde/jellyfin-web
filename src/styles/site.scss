@@ -205,6 +205,16 @@ form {
 
 /* Mobile responsive improvements */
 @media (max-width: 768px) {
+    /* Ensure header and navigation are always visible */
+    .skinHeader,
+    .headerTabs,
+    .mainDrawerButton {
+        display: flex !important;
+        visibility: visible !important;
+        position: relative;
+        z-index: 1100;
+    }
+
     /* Better touch targets on mobile */
     button,
     a,
@@ -232,8 +242,15 @@ form {
 
     /* Better mobile navigation */
     .mainDrawer {
+        /* Preserve existing positioning and properties */
+        position: fixed;
+        top: 0;
+        bottom: 0;
         width: 85%;
         max-width: 300px;
+        /* Ensure navigation is visible and functional */
+        z-index: 1099;
+        display: flex;
     }
 
     /* Responsive video player */
