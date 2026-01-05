@@ -175,10 +175,9 @@ export function enable() {
 
         const key = getKeyName(e);
 
-        // Ignore navigation keys for non-TV
-        if (!layoutManager.tv && isNavigationKey(key)) {
-            return;
-        }
+        // Allow navigation keys for all platforms (desktop, mobile, TV)
+        // Users expect arrow key navigation in web browsers
+        // isNavigationKey() check removed to enable universal keyboard navigation
 
         // Ignore Media Keys for non-TV platform having MediaSession API
         if (!browser.tv && isMediaKey(key) && hasMediaSession) {
