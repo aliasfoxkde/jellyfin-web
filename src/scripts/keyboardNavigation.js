@@ -225,11 +225,8 @@ export function enable() {
                 break;
 
             case 'Escape':
-                if (layoutManager.tv) {
-                    inputManager.handleCommand('back');
-                } else {
-                    capture = false;
-                }
+                // ESC key goes back on all platforms (desktop, mobile, TV)
+                inputManager.handleCommand('back');
                 break;
 
             case 'Find':

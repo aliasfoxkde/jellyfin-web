@@ -175,3 +175,107 @@ form {
     margin-top: auto;
     margin-bottom: auto;
 }
+
+/* ============================================================
+   IMPROVED RESPONSIVENESS & STYLING
+   ============================================================ */
+
+/* Better focus indicators for keyboard navigation */
+:focus-visible {
+    outline: 2px solid #00a4dc !important;
+    outline-offset: 1px !important;
+}
+
+/* Fix multiple element highlights - only show focus on active element */
+:focus:not(:focus-visible) {
+    outline: none !important;
+}
+
+/* Smooth vertical responsiveness */
+@media (max-height: 600px) {
+    html {
+        font-size: 14px;
+    }
+
+    .skinHeader {
+        padding-top: 0.5em !important;
+        padding-bottom: 0.5em !important;
+    }
+
+    .pageTitle {
+        font-size: 1.2em !important;
+        margin: 0.3em 0 !important;
+    }
+
+    .sectionTitle {
+        margin: 0.5em 0 !important;
+        font-size: 1.1em !important;
+    }
+}
+
+@media (max-height: 480px) {
+    html {
+        font-size: 12px;
+    }
+
+    .card {
+        margin-bottom: 0.3em !important;
+    }
+}
+
+/* Horizontal responsiveness */
+@media (max-width: 600px) {
+    .card,
+    .itemsContainer {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+    .card,
+    .itemsContainer {
+        width: 50% !important;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+    .card,
+    .itemsContainer {
+        width: 33.33% !important;
+    }
+}
+
+@media (min-width: 1920px) {
+    .card,
+    .itemsContainer {
+        max-width: 25%;
+    }
+}
+
+/* Improved card styling */
+.card {
+    transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+@media (hover: hover) {
+    .card:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        transform: translateY(-2px);
+    }
+}
+
+/* Better button styling */
+button,
+.btn {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:focus-visible,
+.btn:focus-visible {
+    box-shadow: 0 0 0 2px rgba(0, 164, 220, 0.5);
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
