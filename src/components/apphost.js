@@ -174,12 +174,31 @@ function getDeviceName() {
 }
 
 function supportsFullscreen() {
-    if (browser.tv) {
-        return false;
+    // Check for actual fullscreen API support rather than blanket-disabling for TV
+    // Modern TV browsers (Tizen 4+, WebOS 5+, etc.) DO support fullscreen
+    const element = document.documentElement;
+    const hasFullscreenAPI = !!(
+        element.requestFullscreen
+        || element.mozRequestFullScreen
+        || element.webkitRequestFullscreen
+        || element.msRequestFullscreen
+    );
+
+    // iOS Safari uses webkitEnterFullscreen on video elements
+    const hasVideoFullscreen = !!document.createElement('video').webkitEnterFullscreen;
+
+    // Android browser may support fullscreen via video element
+    if (browser.android && hasVideoFullscreen) {
+        return true;
     }
 
-    const element = document.documentElement;
-    return !!(element.requestFullscreen || element.mozRequestFullScreen || element.webkitRequestFullscreen || element.msRequestFullscreen || document.createElement('video').webkitEnterFullscreen);
+    // Tizen and WebOS browsers support fullscreen API
+    if (browser.tizen || browser.web0s) {
+        return hasFullscreenAPI || hasVideoFullscreen;
+    }
+
+    // For all other cases, check the standard fullscreen API
+    return hasFullscreenAPI || hasVideoFullscreen;
 }
 
 function getDefaultLayout() {

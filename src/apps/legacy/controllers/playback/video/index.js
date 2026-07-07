@@ -764,7 +764,7 @@ export default function (view) {
                 userSettings.skipForwardLength() * 1000000 / nowPlayingItem.RunTimeTicks);
         }
 
-        if (supportedCommands.indexOf('ToggleFullscreen') === -1 || player.isLocalPlayer && layoutManager.tv && playbackManager.isFullscreen(player)) {
+        if (supportedCommands.indexOf('ToggleFullscreen') === -1) {
             view.querySelector('.btnFullscreen').classList.add('hide');
         } else {
             view.querySelector('.btnFullscreen').classList.remove('hide');

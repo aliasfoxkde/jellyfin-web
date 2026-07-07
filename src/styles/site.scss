@@ -286,3 +286,96 @@ button:focus-visible,
 html {
     scroll-behavior: smooth;
 }
+
+/* ============================================================
+   NETFLIX-STYLE UI IMPROVEMENTS
+   ============================================================ */
+
+/* Hide scrollbars until hover (cleaner look like Netflix) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+:hover::-webkit-scrollbar-thumb,
+:focus-within::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.6);
+}
+
+/* Enhanced card focus for Netflix-style navigation */
+.card.show-focus {
+    transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                box-shadow 0.25s ease,
+                z-index 0s;
+}
+
+.card.show-focus:focus .cardBox {
+    transform: scale(1.05, 1.05);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+                0 0 0 2px var(--focus-color, #00a4dc);
+    border-radius: 0.7em;
+}
+
+/* Card overlay on focus (similar to Netflix preview) */
+.card.show-focus:focus .cardOverlayContainer {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%);
+}
+
+/* Smooth horizontal scroll for carousels */
+.itemsContainer {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;  /* Firefox - hide scrollbar */
+}
+
+.itemsContainer::-webkit-scrollbar {
+    display: none;  /* Chrome/Safari - hide scrollbar */
+}
+
+/* Skip the "hover" lift on focus to avoid double-effect */
+.card.show-focus:focus {
+    transform: none;
+}
+
+/* Cinema/backdrop mode - dim background when focused */
+.mainDrawer {
+    transition: opacity 0.3s ease;
+}
+
+.layout-tv .skinContent {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+/* Fullscreen button in header for TV browsers */
+.tv-fullscreen-btn {
+    position: relative;
+}
+
+.tv-fullscreen-btn::after {
+    content: 'Fullscreen';
+    position: absolute;
+    bottom: -1.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.7em;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+.tv-fullscreen-btn:focus::after {
+    opacity: 1;
+}

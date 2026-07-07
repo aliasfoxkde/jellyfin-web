@@ -94,7 +94,9 @@ export const resolveCardCssClasses = (opts: CardCssClassOpts): string => {
         [`${opts.cardCssClass}`]: opts.cardCssClass,
         [`${opts.cardClass}`]: opts.cardClass,
         'card-hoverable': opts.isDesktop,
-        'show-focus': opts.isTV,
+        // Enable show-focus for all layouts (not just TV) since cards are now button elements
+        // This ensures keyboard users on desktop/mobile can see focus indicators
+        'show-focus': true,
         'show-animation': opts.isTV && opts.enableFocusTransform,
         'groupedCard': opts.showChildCountIndicator && opts.childCount,
         'card-withuserdata': !['MusicAlbum', 'MusicArtist', 'Audio'].includes(opts.itemType),
