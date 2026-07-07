@@ -767,7 +767,9 @@ export default function (view) {
         if (supportedCommands.indexOf('ToggleFullscreen') === -1) {
             view.querySelector('.btnFullscreen').classList.add('hide');
         } else {
+            // Make fullscreen button floating for TV browsers
             view.querySelector('.btnFullscreen').classList.remove('hide');
+            view.querySelector('.btnFullscreen').classList.add('floatingFullscreenBtn');
         }
 
         if (supportedCommands.indexOf('PictureInPicture') === -1) {
