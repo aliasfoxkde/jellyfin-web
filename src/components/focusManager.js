@@ -259,12 +259,23 @@ function nav(activeElement, direction, container, focusableElements) {
 
     const focusable = focusableElements || container.querySelectorAll(focusableQuery);
 
+    // Netflix-style: Filter to only card elements within items containers
+    // This prevents arrow keys from navigating through labels, metadata, and UI chrome
+    const isItemsContainer = container.classList?.contains('itemsContainer');
+    let cardElements = null;
+    if (isItemsContainer) {
+        cardElements = container.querySelectorAll('.card');
+    }
+
     const maxDistance = Infinity;
     let minDistance = maxDistance;
     let nearestElement;
 
-    for (let i = 0, length = focusable.length; i < length; i++) {
-        const curr = focusable[i];
+    // Use card elements for navigation within items containers (Netflix-style)
+    const navigationTargets = cardElements || focusable;
+
+    for (let i = 0, length = navigationTargets.length; i < length; i++) {
+        const curr = navigationTargets[i];
 
         if (curr === activeElement) {
             continue;
