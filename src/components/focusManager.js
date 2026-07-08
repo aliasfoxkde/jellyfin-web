@@ -259,11 +259,13 @@ function nav(activeElement, direction, container, focusableElements) {
 
     const focusable = focusableElements || container.querySelectorAll(focusableQuery);
 
-    // Netflix-style: Filter to only card elements within items containers
-    // This prevents arrow keys from navigating through labels, metadata, and UI chrome
-    const isItemsContainer = container.classList?.contains('itemsContainer');
+    // Netflix-style: Filter to only card elements within horizontal carousels
+    // Only apply when container has BOTH itemsContainer AND focuscontainer-x classes
+    // This ensures LEFT/RIGHT only navigates through cards, not labels/UI chrome
+    const isHorizontalCarousel = container.classList?.contains('itemsContainer')
+        && container.classList?.contains('focuscontainer-x');
     let cardElements = null;
-    if (isItemsContainer) {
+    if (isHorizontalCarousel) {
         cardElements = container.querySelectorAll('.card');
     }
 
@@ -271,7 +273,7 @@ function nav(activeElement, direction, container, focusableElements) {
     let minDistance = maxDistance;
     let nearestElement;
 
-    // Use card elements for navigation within items containers (Netflix-style)
+    // Use card elements for navigation within horizontal carousels (Netflix-style)
     const navigationTargets = cardElements || focusable;
 
     for (let i = 0, length = navigationTargets.length; i < length; i++) {
